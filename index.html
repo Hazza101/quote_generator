@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <style>
+        main {
+            max-height: calc(100vh - 150px);
+            
+            margin-top: 1em;
+            display: flex;
+            
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        main > *:not(:first-child) {
+            margin-top: 2rem; /* Adjust the spacing between items */
+            border-top: 3px solid black; /* Add a black line above each item */
+            padding-top: 1rem; /* Adjust the padding between the line and the item content */
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .right-side,
+        .middle-side {
+            width: calc(50% - 2px); /* Adjusted width to accommodate borders */
+            
+            box-sizing: border-box; /* Include border in width calculation */
+        }
+
+        .left-side {
+            width: calc(50% - 2px);
+            box-sizing: border-box;
+            
+        }
+
+        .middle-side {
+        
+            
+            padding-left: 1em;
+            background-color: #ffcccc;
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 2%;
+            margin-right: 2%;
+            border: 1px solid black;
+            
+
+        }
+
+        .left-side {
+            padding-left: 5%;
+            padding-right: 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            
+            
+        }
+
+        .left-side p {
+            font-size: small;
+        }
+
+
+
+
+        .right-side {
+            
+            background-color: black;
+            border-radius: 20px;
+            margin-left: 2%;
+            margin-right: 2%;
+            color: #ffcccc;
+            color: #00ADB5;
+            border: 1px solid black;
+            
+        }
+
+
+        .top-side {
+            
+            
+            border-radius: 20px;
+            padding: 10px;
+            display: flex;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            width: 100%;
+
+            color: black;
+            
+            
+           
+
+        }
+
+        .intro-txt p {
+            font-size: small;
+            width: calc(50% - 2px);
+            border: 1px solid black;
+            
+        }
+
+        .quote-explain {
+            width: calc(50% - 2px);    
+            border: 1px solid black;
+        }
+
+        .bottom-side {
+            display: flex;
+            justify-content: space-between;
+            
+            width: calc(100% - 2px);
+
+        }
+
+        .left-side h1 {
+            
+            font-size: xx-large;
+            margin-top: 0; /* Added to reset default margins */
+            padding: 0;
+            padding-top: 0.5rem;
+            
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+            
+            
+        }
+
+        .middle-side h1 {
+            
+            font-size: xx-large;
+            margin-top: 0; /* Added to reset default margins */
+            padding: 0;
+            padding-top: 0.5rem;
+            color: black;
+            
+            font-weight: normal;
+            
+        }
+
+        .right-side h1 {
+            
+            font-size: xx-large;
+            margin-top: 0; /* Added to reset default margins */
+            padding: 0;
+            
+            text-shadow: 2px 2px 3px rgba(230, 223, 223, 0.5);
+            
+        }
+
+        .right-side h1 {
+            text-align: center;
+        }
+
+        
+        .video-layer {
+            width: 100%;
+        }
+        .video-box {
+            display: flex; /* Enable flexbox layout */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            
+        
+            
+            
+            
+        }
+
+        /* border: 1px solid black;
+            background-color: #3366cc;
+            border-radius: 20px; */
+
+
+
+        .video-box video {
+            max-width: 100%; /* Ensure the video does not exceed the width of its container */
+            max-height: 100%; /* Ensure the video does not exceed the height of its container */
+        
+            border-radius: 5px;
+            
+        }
+
+        @media screen and (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center; /* Optional: To center items in column */
+                
+            }
+
+            .left-side,
+            .middle-side,
+            .right-side {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+        section {
+           
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        
+
+        
+        
+
+        .button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 5px;
+    padding: 20px;
+   
+    width: 300px;
+    margin: auto;
+    
+  }
+  
+  .button-on, .button-off {
+    padding: 10px 10px;
+    
+    font-size: large;
+    
+    border: 1px solid black;
+
+    
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+   
+    width: 50px;
+    height:50px;
+   
+  }
+
+  .button-on {
+    color: white;
+    background-color: #00ADB5;
+  }
+
+  .button-off {
+    color: black;
+    background-color: white;
+  }
+
+
+  
+  .button-on:hover {
+   
+    transform: scale(1.2);
+   
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .books {
+    
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+  .books h1 {
+    padding-top: 20px;
+  }
+
+  .books li {
+    margin-bottom: 10px;
+  }
+
+  .b-books {
+    display: none;
+  }
+
+  .c-books{ display:none; }
+.d-books{ display:none; }
+.e-books{ display:none; }
+.f-books{ display:none; }
+.g-books{ display:none; }
+.h-books{ display:none; }
+.i-books{ display:none; }
+.j-books{ display:none; }
+.k-books{ display:none; }
+.l-books{ display:none; }
+.m-books{ display:none; }
+.n-books{ display:none; }
+.o-books{ display:none; }
+.p-books{ display:none; }
+.q-books{ display:none; }
+.r-books{ display:none; }
+.s-books{ display:none; }
+.t-books{ display:none; }
+.u-books{ display:none; }
+.v-books{ display:none; }
+.w-books{ display:none; }
+.x-books{ display:none; }
+.y-books{ display:none; }
+.z-books{ display:none; }
+ 
+
+    </style>
+</head>
+<body>
+
+    <script>
+
+    </script>
+
+    
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        
+        
+
+
+    </header>
+    <!--<nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav> -->
+    <main>
+    <div class="top-side">
+    
+            <div class="intro-txt">
+                <h1>Welcome!</h1>
+                <p>Preparing for your English Literature GCSE? Look no further!
+
+                    At What's My Exam Quote, we specialize in providing curated lists of quotes from various literary works, making your exam prep a breeze. Our platform offers an extensive collection of quotes categorized by book, allowing you to quickly find the quotes you need.
+                    
+                    With our convenient "Copy All" feature, you can easily transfer the entire list of quotes to your clipboard, saving you time and effort during revision sessions.
+                    
+                    Each quote on our platform comes with a concise explanation, helping you understand its significance and context within the text. Our goal is to empower you with the knowledge and insights needed to excel in your exams.
+                    
+                    Have a question or need further assistance? Don't hesitate to reach out to us! You can contact us via email, conveniently located in the footer of our website.
+                    
+                    Happy studying!</p>
+            </div>
+
+            <div class="quote-explain">
+                <img src="quote_example.jpg" alt="example quote" />
+            </div>
+            
+    </div>
+
+    
+    
+    
+    
+    
+    <div class="bottom-side">
+    <div class="middle-side">    
+        <section>
+        <h1>Search for your books</h1>
+        
+    </section>
+
+    <script>
+        function letterFunction(letter) {
+            var parentElement = document.getElementById('books');
+            var subDivs = parentElement.querySelectorAll('div');
+
+            
+            var elements = document.getElementsByClassName(letter);
+
+            subDivs.forEach(function(div)  {
+                div.style.display = 'none'
+            });
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = 'block';
+            }
+            
+        }
+    </script>
+
+<div class="button-grid">
+    <button class="button-on" onclick="letterFunction('a-books')">A</button>
+    <button class="button-on" onclick="letterFunction('b-books')">B</button>
+    <button class="button-on" onclick="letterFunction('c-books')">C</button>
+    <button class="button-on" onclick="letterFunction('d-books')">D</button>
+    <button class="button-off">E</button>
+    <button class="button-on" onclick="letterFunction('f-books')">F</button>
+    <button class="button-on" onclick="letterFunction('g-books')">G</button>
+    <button class="button-on" onclick="letterFunction('h-books')">H</button>
+    <button class="button-off">I</button>
+    <button class="button-on" onclick="letterFunction('j-books')">J</button>
+    <button class="button-off">K</button>
+    <button class="button-on" onclick="letterFunction('l-books')">L</button>
+    <button class="button-on" onclick="letterFunction('m-books')">M</button>
+    <button class="button-on" onclick="letterFunction('n-books')">N</button>
+    <button class="button-off">O</button>
+    <button class="button-on" onclick="letterFunction('p-books')">P</button>
+    <button class="button-off">Q</button>
+    <button class="button-on" onclick="letterFunction('r-books')">R</button>
+    <button class="button-on" onclick="letterFunction('s-books')">S</button>
+    <button class="button-on" onclick="letterFunction('t-books')">T</button>
+    <button class="button-off">U</button>
+    <button class="button-off">V</button>
+    <button class="button-off">W</button>
+    <button class="button-off">X</button>
+    <button class="button-off">Y</button>
+    <button class="button-off">Z</button>
+</div>
+
+</div>
+<div class="right-side">
+    <div class="books" id="books">
+        <div class="a-books">
+            <h1>A</h1>
+            <ul>
+                <li><a href="books\A Christmas Carol.html">A Christmas Carol</a></li>
+                <li><a href="books\A Taste of Honey.html">A Taste of Honey</a></li>
+                <li><a href="books\An Inspector Calls.html">An Inspector Calls</a></li>
+                <li><a href="books\Animal Farm.html">Animal Farm</a></li>
+                <li><a href="books\Anita and Me.html">Anita and Me</a></li>
+            </ul>
+        </div>
+        <div class="b-books">
+            <h1>B</h1>
+            <ul>
+                <li><a href="books\Blood Brothers.html">Blood Brothers</a></li>
+                <li><a href="books\Boys Don't Cry.html">Boys Don't Cry</a></li>
+            </ul>
+        </div>
+        <div class="c-books">
+            <h1>C</h1>
+            <ul>
+                <li><a href="books\Coram Boy.html">Coram Boy</a></li>
+            </ul>
+        </div>
+        <div class="d-books">
+            <h1>D</h1>
+            <ul>
+                <li><a href="books\DNA.html">DNA</a></li>
+            </ul>
+        </div>
+        <div class="e-books">
+            <h1>E</h1>
+            <ul>
+        <li>No books for e</li>
+            </ul>
+        </div>
+        <div class="f-books">
+            <h1>F</h1>
+            <ul>
+                <li><a href="books\Frankenstein.html">Frankenstein</a></li>
+            </ul>
+        </div>
+        <div class="g-books">
+            <h1>G</h1>
+            <ul>
+                <li><a href="books\Great Expectations.html">Great Expectations</a></li>
+            </ul>
+        </div>
+        <div class="h-books">
+            <h1>H</h1>
+            <ul>
+                <li><a href="books\Hobson's Choice.html">Hobson's Choice</a></li>
+            </ul>
+        </div>
+        <div class="i-books">
+            <h1>I</h1>
+            <ul>
+        <li>No books for i</li>
+            </ul>
+        </div>
+        <div class="j-books">
+            <h1>J</h1>
+            <ul>
+                <li><a href="books\Jane Eyre.html">Jane Eyre</a></li>
+                <li><a href="books\Journey's End.html">Journey's End</a></li>
+                <li><a href="books\Julius Caesar.html">Julius Caesar</a></li>
+            </ul>
+        </div>
+        <div class="k-books">
+            <h1>K</h1>
+            <ul>
+        <li>No books for k</li>
+            </ul>
+        </div>
+        <div class="l-books">
+            <h1>L</h1>
+            <ul>
+                <li><a href="books\Leave Taking.html">Leave Taking</a></li>
+                <li><a href="books\Lord of the Flies.html">Lord of the Flies</a></li>
+            </ul>
+        </div>
+        <div class="m-books">
+            <h1>M</h1>
+            <ul>
+                <li><a href="books\Macbeth.html">Macbeth</a></li>
+                <li><a href="books\Much Ado About Nothing.html">Much Ado About Nothing</a></li>
+                <li><a href="books\My Name is Leon.html">My Name is Leon</a></li>
+            </ul>
+        </div>
+        <div class="n-books">
+            <h1>N</h1>
+            <ul>
+                <li><a href="books\Never Let Me Go.html">Never Let Me Go</a></li>
+            </ul>
+        </div>
+        <div class="o-books">
+            <h1>O</h1>
+            <ul>
+        <li>No books for o</li>
+            </ul>
+        </div>
+        <div class="p-books">
+            <h1>P</h1>
+            <ul>
+                <li><a href="books\Pigeon English.html">Pigeon English</a></li>
+                <li><a href="books\Pride and Prejudice.html">Pride and Prejudice</a></li>
+                <li><a href="books\Princess and the Hustler.html">Princess and the Hustler</a></li>
+            </ul>
+        </div>
+        <div class="q-books">
+            <h1>Q</h1>
+            <ul>
+        <li>No books for q</li>
+            </ul>
+        </div>
+        <div class="r-books">
+            <h1>R</h1>
+            <ul>
+                <li><a href="books\Refugee Boy.html">Refugee Boy</a></li>
+                <li><a href="books\Romeo and Juliet.html">Romeo and Juliet</a></li>
+            </ul>
+        </div>
+        <div class="s-books">
+            <h1>S</h1>
+            <ul>
+                <li><a href="books\Silas Marner.html">Silas Marner</a></li>
+            </ul>
+        </div>
+        <div class="t-books">
+            <h1>T</h1>
+            <ul>
+                <li><a href="books\Telling Tales.html">Telling Tales</a></li>
+                <li><a href="books\The Curious Incident of the Dog in the Night-Time.html">The Curious Incident of the Dog in the Night-Time</a></li>
+                <li><a href="books\The Empress.html">The Empress</a></li>
+                <li><a href="books\The History Boys.html">The History Boys</a></li>
+                <li><a href="books\The Merchant of Venice.html">The Merchant of Venice</a></li>
+                <li><a href="books\The Sign of Four.html">The Sign of Four</a></li>
+                <li><a href="books\The Strange Case of Dr. Jekyll and Mr. Hyde.html">The Strange Case of Dr. Jekyll and Mr. Hyde</a></li>
+                <li><a href="books\The Tempest.html">The Tempest</a></li>
+                <li><a href="books\The War of the Worlds.html">The War of the Worlds</a></li>
+                <li><a href="books\The Woman in Black.html">The Woman in Black</a></li>
+                <li><a href="books\Twelfth Night.html">Twelfth Night</a></li>
+            </ul>
+        </div>
+        <div class="u-books">
+            <h1>U</h1>
+            <ul>
+        <li>No books for u</li>
+            </ul>
+        </div>
+        <div class="v-books">
+            <h1>V</h1>
+            <ul>
+        <li>No books for v</li>
+            </ul>
+        </div>
+        <div class="w-books">
+            <h1>W</h1>
+            <ul>
+        <li>No books for w</li>
+            </ul>
+        </div>
+        <div class="x-books">
+            <h1>X</h1>
+            <ul>
+        <li>No books for x</li>
+            </ul>
+        </div>
+        <div class="y-books">
+            <h1>Y</h1>
+            <ul>
+        <li>No books for y</li>
+            </ul>
+        </div>
+        <div class="z-books">
+            <h1>Z</h1>
+            <ul>
+        <li>No books for z</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+    
+
+
+<div class="video-layer">
+<div class="video-box">
+    <video controls width="660" height="360">
+        <source src="media/intro_vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+</div>
+    
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+    
+</main>
+
+
+    
+   
+</body>
+</html>

@@ -1,0 +1,5 @@
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

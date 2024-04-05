@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Christmas Carol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>A Christmas Carol</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Redemption and Transformation
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Oh! But he was a tight-fisted hand at the grindstone, Scrooge! a squeezing, wrenching, grasping, scraping, clutching, covetous, old sinner!" (Stave 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote establishes the character of Scrooge at the start of his journey, emphasizing his miserly and selfish nature, setting the stage for his redemption and transformation.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I will honour Christmas in my heart, and try to keep it all the year. I will live in the Past, the Present, and the Future." (Stave 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">In this pivotal moment, Scrooge resolves to change his ways and embrace the spirit of Christmas, demonstrating his commitment to redemption and personal transformation.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Scrooge was better than his word. He did it all, and infinitely more; and to Tiny Tim, who did not die, he was a second father." (Stave 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This concluding passage illustrates the extent of Scrooge's redemption and transformation as he not only fulfills his promise but also becomes a compassionate and caring figure, symbolizing his complete metamorphosis.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Generosity and Compassion
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"At this festive season of the year, Mr Scrooge," said the gentleman, taking up a pen, "it is more than usually desirable that we should make some slight provision for the Poor and destitute, who suffer greatly at the present time." (Stave 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote introduces the theme of generosity and compassion, contrasting Scrooge's initial lack of concern for the less fortunate with the spirit of giving embodied by the holiday season.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Man," said the Ghost, "if man you be in heart, not adamant, forbear that wicked cant until you have discovered What the surplus is, and Where it is. Will you decide what men shall live, what men shall die?" (Stave 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Here, the Ghost challenges Scrooge to reconsider his attitudes towards generosity and compassion, urging him to recognize the importance of empathy and kindness in alleviating human suffering.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"God bless us, Every One!" said Tiny Tim, the last of all." (Stave 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This heartfelt blessing from Tiny Tim encapsulates the theme of generosity and compassion, emphasizing the transformative power of love and goodwill towards others.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Isolation and Loneliness
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Solitary as an oyster." (Stave 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This description of Scrooge's isolation highlights his emotional detachment and loneliness, setting the stage for his journey towards connection and belonging.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Is there a peculiar flavour in what you sprinkle from your torch?" asked Scrooge. "There is. My own." (Stave 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This exchange between Scrooge and the Ghost of Christmas Present underscores Scrooge's isolation, as he confronts the consequences of his self-centeredness and lack of empathy.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I will live in the Past, the Present, and the Future." (Stave 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">In this moment, Scrooge acknowledges the importance of embracing all aspects of life, signaling his rejection of isolation and his desire for connection and engagement with the world around him.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

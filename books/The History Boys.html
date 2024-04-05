@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The History Boys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>The History Boys</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Education and Learning
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The best moments in reading are when you come across something – a thought, a feeling, a way of looking at things – that you’d thought special, particular to you. And here it is, set down by someone else, a person you’ve never met, maybe even someone long dead. And it’s as if a hand has come out and taken yours."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote highlights the transformative power of literature and how it connects individuals across time and space. It portrays the profound impact of encountering ideas and emotions expressed by others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The best we can hope for is to make ourselves vivid to ourselves."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote emphasizes the importance of self-awareness and introspection in the process of learning and personal development. It suggests that understanding oneself is a fundamental aspect of education.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The best moments in teaching are when you can see the penny drop."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects the gratification experienced by educators when their students experience breakthroughs in understanding. It captures the rewarding nature of teaching and witnessing the comprehension of new concepts.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Self-Discovery
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I never was clever. That’s the first thing to say."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote expresses a self-perception of modesty and perhaps a lack of confidence in one's intellectual abilities. It sets the tone for exploring themes of self-awareness and acceptance.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The beginning of love is to let those we love be perfectly themselves, and not to twist them to fit our own image."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote emphasizes the importance of accepting others for who they truly are, rather than imposing our expectations or desires upon them. It suggests that genuine love involves respecting individual identity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I never have known whether Missus Cripps was my teacher or my subject. My tormentor or my accomplice. Maybe she was both. Maybe that’s education."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects on the complex dynamics of the teacher-student relationship and the ambiguity of learning experiences. It suggests that education involves more than just imparting knowledge; it encompasses interpersonal interactions and emotional growth.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Authority and Rebellion
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I wouldn’t have missed it for the world. Except I think I already have."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote hints at a sense of disillusionment or detachment from societal expectations or norms. It sets the stage for exploring themes of defiance and nonconformity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Pass the parcel. That’s sometimes all you can do. Take it, feel it and pass it on. Not for me, not for you, but for someone, somewhere, one day. Pass it on, boys. That’s the game I want you to learn. Pass it on."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote metaphorically conveys the idea of passing on knowledge, experiences, or responsibilities to others. It implies a sense of duty to contribute to the collective growth and development of society.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I never have been able to get rid of him."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote hints at the persistence of influence or authority figures in one's life, despite attempts to break free from their control or influence. It suggests the enduring impact of certain individuals on our thoughts and actions.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

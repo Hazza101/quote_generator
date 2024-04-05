@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Taking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Leave Taking</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Cultural Identity
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Dem nuh have no home. Dem a sleep pon sand outside a National Portrait Gallery. Imagine dat." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote highlights the struggles faced by individuals who lack a sense of belonging and cultural identity, emphasizing the challenges of displacement and homelessness.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We cyaan always choose our past, but we can choose our future." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement underscores the theme of cultural identity by suggesting agency in shaping one's future despite the constraints of the past, reflecting on the importance of self-determination and resilience.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You still got the accent." "So?" "So you still Jamaican." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The dialogue exchange highlights the enduring significance of cultural identity, as characters recognize and affirm each other's Jamaican heritage, emphasizing the theme of cultural identity and belonging.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Family Dynamics
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Is her sleep, man, she tired, man." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote reflects a familial dynamic of care and concern, illustrating the nurturing role within the family unit and emphasizing the theme of familial bonds and support.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You've been missed." "Who missed me?" "Me." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The interaction between characters reveals the emotional connection and longing within the family, underscoring the theme of family dynamics and the importance of mutual affection and recognition.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Mi nuh know why yuh don't come back, mi woulda come if you did." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The dialogue expresses a desire for familial unity and understanding, reflecting on the complexities of familial relationships and the longing for closeness, emphasizing the theme of family dynamics.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Generational Conflict
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"You have to talk to your grandmother, Daphne. She's got to start realising that you're a grown woman." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote highlights the theme of generational conflict as characters navigate differing expectations and perspectives between younger and older generations, reflecting on the challenges of intergenerational communication and understanding.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Why can't you just say what you feel, Sistren? Why are you always so polite?" (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The dialogue reveals a clash of communication styles and values between generations, emphasizing the theme of generational conflict and the tension between tradition and modernity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm not you. And you're not me. We are different." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement encapsulates the theme of generational conflict by acknowledging and asserting individuality within the context of familial relationships, highlighting the need for acceptance and respect across generations.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

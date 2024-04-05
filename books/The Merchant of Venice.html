@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Merchant of Venice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>The Merchant of Venice</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Prejudice and Discrimination
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"How like a fawning publican he looks! I hate him for he is a Christian.", "Act 1, Scene 3"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote reveals Shylock's prejudice against Antonio for his Christian faith, highlighting the theme of prejudice and discrimination based on religious differences.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Hath not a Jew eyes? Hath not a Jew hands, organs, dimensions, senses, affections, passions?", "Act 3, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Shylock challenges the prejudice against Jews by asserting their common humanity, suggesting that they share the same basic qualities and deserve equal treatment.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Nay, take my life and all; pardon not that. You take my house when you do take the prop that doth sustain my house; you take my life when you do take the means whereby I live.", "Act 4, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Shylock's plea for mercy emphasizes the discrimination he faces as a Jew and the injustice of his treatment in Venetian society.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Mercy vs. Justice
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"You may as well go stand upon the beach, and bid the main flood bate his usual height; you may as well use question with the wolf why he hath made the ewe bleat for the lamb.", "Act 1, Scene 3"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Portia's comparison highlights the futility of trying to restrain natural forces or questioning innate instincts, illustrating the theme of mercy versus justice.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The quality of mercy is not strain'd, it droppeth as the gentle rain from heaven upon the place beneath.", "Act 4, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Portia's speech on mercy emphasizes the importance of compassion and forgiveness over strict adherence to the law, advocating for a balance between justice and mercy.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"But when this ring parts from this finger, then parts life from hence. O, then be bold to say Bassanio's dead.", "Act 5, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Portia's ultimatum challenges Bassanio to uphold his promise, highlighting the tension between justice and personal loyalty.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Love and Friendship
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I hold the world but as the world, Gratiano; a stage where every man must play a part, and mine a sad one.", "Act 1, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Antonio reflects on the transient nature of life and the masks people wear, suggesting the complexities of love and friendship in a world filled with sorrow.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"How far that little candle throws his beams! So shines a good deed in a naughty world.", "Act 3, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Portia celebrates the power of kindness and good deeds to illuminate the darkness of the world, emphasizing the importance of love and friendship.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Here, catch this casket; it is worth the pains. I am glad 'tis night, you do not look on me, for I am much ashamed of my exchange.", "Act 5, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Portia's expression of vulnerability and shame underscores the depth of her love for Bassanio, highlighting the transformative power of love and friendship.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tempest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>The Tempest</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Power and Control
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"All hail, great master! Grave sir, hail! I come / To answer thy best pleasure; be’t to fly, / To swim, to dive into the fire, to ride / On the curled clouds, to thy strong bidding task / Ariel and all his quality.", "Act 1, Scene 2"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote illustrates the theme of power and control as Prospero's servant Ariel demonstrates complete obedience and willingness to carry out Prospero's commands, highlighting Prospero's authority over magical forces.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Thy false uncle - Dost thou attend me?", "Act 3, Scene 3"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero asserts his control over Caliban by reminding him of his betrayal, reinforcing his dominance and authority over Caliban's actions.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'll drown my book. / ... Let your indulgence set me free.", "Act 5, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero relinquishes his power over magic by promising to drown his book, symbolizing his decision to give up control and seek redemption and freedom through forgiveness.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Colonialism and Otherness
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"This island’s mine, by Sycorax my mother, / Which thou tak'st from me.", "Act 1, Scene 2"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Caliban's assertion of ownership over the island reflects themes of colonialism and otherness, highlighting the conflict between colonizers and the indigenous inhabitants whose land is taken from them.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Be not afeard. The isle is full of noises, / Sounds, and sweet airs that give delight and hurt not.", "Act 3, Scene 2"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero reassures Miranda about the mysterious sounds of the island, suggesting a sense of wonder and beauty in the otherness of the island's environment.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"This thing of darkness I acknowledge mine.", "Act 5, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero accepts responsibility for Caliban, acknowledging his own role in the colonization and mistreatment of the island's indigenous inhabitants.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Forgiveness and Redemption
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"If thou more murmur'st, I will rend an oak / And peg thee in his knotty entrails till / Thou hast howled away twelve winters.", "Act 1, Scene 2"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero threatens Caliban with punishment, but also hints at the possibility of redemption through repentance.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Though with their high wrongs I am struck to the quick, / Yet with my nobler reason 'gainst my fury / Do I take part. The rarer action is / In virtue than in vengeance.", "Act 3, Scene 3"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero wrestles with his desire for vengeance and ultimately chooses to prioritize forgiveness and virtue over revenge, indicating a path towards redemption.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"As you from crimes would pardoned be, / Let your indulgence set me free.", "Act 5, Scene 1"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Prospero appeals to forgiveness and redemption, asking for mercy and freedom from his past wrongs as he seeks to move forward with a clean slate.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

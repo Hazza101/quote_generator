@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess and the Hustler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Princess and the Hustler</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Self-Discovery
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I’m going to make myself proud." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects a determination to pursue personal growth and achieve self-fulfillment, indicating the character's commitment to discovering their true potential and realizing their aspirations.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm not ashamed of where I come from. But I don't want it to dictate where I'm going." (Act 2, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Here, the character asserts their autonomy and agency in shaping their own identity, expressing a desire to transcend societal expectations and limitations imposed by their background.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm not just a Princess. I'm a Queen." (Act 3, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote symbolizes a culmination of self-discovery and empowerment, as the character embraces their inner strength and dignity, recognizing their worth beyond superficial labels.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Race and Ethnicity
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm black and I'm proud." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote signifies a positive affirmation of racial identity and cultural pride, highlighting the character's confidence and resilience in the face of racial prejudice and discrimination.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm tired of being judged by the colour of my skin." (Act 2, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Here, the character expresses frustration with the pervasive racism they encounter, emphasizing the need for societal recognition and acceptance of individuals based on their character rather than skin color.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We're more than the stereotypes they try to force on us." (Act 3, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote underscores the complexity and diversity of identity within racial and ethnic communities, challenging narrow-minded stereotypes and advocating for the acknowledgment of individuality and humanity.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Family and Relationships
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"We stick together, no matter what." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote highlights the importance of familial bonds and solidarity, suggesting a strong sense of loyalty and support among family members, even in the face of adversity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We may not have it all, but we have each other." (Act 2, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Here, the character emphasizes the significance of emotional connection and unity within the family, prioritizing mutual care and companionship over material wealth or external validation.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We're a family, and that's all that matters." (Act 3, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reaffirms the central role of family in providing love, belonging, and stability, emphasizing its intrinsic value and significance in the characters' lives.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord of the Flies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Lord of the Flies</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Civilization vs. Savagery
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"We've got to have rules and obey them. After all, we're not savages." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote emphasizes the importance of civilization and order, suggesting a desire to maintain a sense of humanity and decency despite their challenging circumstances.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Fancy thinking the Beast was something you could hunt and kill! You knew, didn't you? I'm part of you? Close, close, close! I'm the reason why it's no go? Why things are what they are?" (Chapter 8)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the dialogue delves into the theme of savagery, with the revelation that the true "Beast" resides within the boys themselves, highlighting the primal instincts and darkness lurking within human nature.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The world, that understandable and lawful world, was slipping away." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote reflects the complete breakdown of civilization and the descent into savagery, as the boys lose their grip on reason and morality, signaling the triumph of primal instincts over societal norms.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Loss of Innocence
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The boy with fair hair lowered himself down the last few feet of rock and began to pick his way towards the lagoon." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the scene sets the stage for the loss of innocence, as the boys' arrival on the island marks the beginning of their journey into the harsh realities of survival and human nature.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The rules!" shouted Ralph. "You're breaking the rules!" (Chapter 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote symbolizes the erosion of innocence, as the boys' disregard for rules and order reflects their descent into savagery and the abandonment of civilized behavior.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Ralph wept for the end of innocence, the darkness of man's heart, and the fall through the air of the true, wise friend called Piggy." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, Ralph's tears represent the profound loss of innocence experienced by the boys, as they confront the harsh realities of their actions and the inherent darkness within humanity.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Power and Control
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"He's a coward himself." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote highlights the dynamics of power and control, as the boys' assessment of each other's character sets the stage for conflicts over leadership and authority on the island.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Which is better - to have rules and agree, or to hunt and kill?" (Chapter 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the question posed by Jack underscores the struggle between civilization and savagery, as the boys grapple with the concept of power and the desire for dominance over others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The officer inspected the little scarecrow in front of him." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the officer's reaction to the boys' appearance reflects the insignificance of their power struggles in the face of the civilized world, highlighting the futile nature of their quest for control.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

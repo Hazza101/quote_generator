@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twelfth Night</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Twelfth Night</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Love and Desire
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"If music be the food of love, play on; / Give me excess of it, that, surfeiting, / The appetite may sicken, and so die." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Orsino's opening lines express his longing for love and desire, highlighting the theme of love and desire as he seeks to drown himself in music to alleviate his unrequited feelings.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Make me a willow cabin at your gate, / And call upon my soul within the house; / Write loyal cantons of contemned love / And sing them loud even in the dead of night." (Act 1, Scene 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Viola, disguised as Cesario, expresses her love for Orsino through poetic language, underscoring the theme of love and desire as she navigates the complexities of identity and attraction.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I am all the daughters of my father's house, / And all the brothers too; and yet I know not. / Sir, shall I to this lady?" (Act 5, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Viola's revelation of her true identity to Orsino marks the resolution of the play's romantic entanglements, emphasizing the theme of love and desire as characters grapple with mistaken identities and true feelings.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Disguise
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"What country, friends, is this?" (Act 1, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Viola's question upon arriving in Illyria highlights the theme of identity and disguise as she navigates unfamiliar territory and assumes a new persona to survive.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'll be revenged on the whole pack of you." (Act 3, Scene 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Malvolio's declaration of revenge after being tricked by Maria and the other servants showcases the theme of identity and disguise as characters assume false identities to deceive and manipulate others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Journeys end in lovers meeting, / Every wise man's son doth know." (Act 5, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Feste's closing lines reflect on the theme of identity and disguise as characters' true identities are revealed, culminating in the resolution of romantic relationships and mistaken identities.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Foolery and Wisdom
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"If I could make that resemble something in me, / Softly! Manners!" (Act 1, Scene 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Feste's witty banter with Olivia highlights the theme of foolery and wisdom as he uses humor to comment on social conventions and human nature.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"There is no darkness but ignorance." (Act 4, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Feste's insight into human ignorance emphasizes the theme of foolery and wisdom as characters grapple with misunderstandings and misconceptions.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Better a witty fool than a foolish wit." (Act 5, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">Feste's concluding remark underscores the theme of foolery and wisdom as he suggests that cleverness combined with folly is preferable to foolishness without wit.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Expectations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Great Expectations</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Social Class and Status
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Keep still, you little devil, or I'll cut your throat!" (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote demonstrates the harsh treatment and lack of regard for individuals of lower social class, highlighting the brutal reality faced by the poor and marginalized.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The country round about was rich with orchard growth; and the low lands, to the water's edge, were sweet with rushes." (Chapter 18)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This passage describes the picturesque landscape, suggesting wealth and prosperity associated with the upper class, contrasting with the poverty depicted earlier, emphasizing the disparities in social class and status.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"No man who was not a true gentleman at heart, ever was, since the world began, a true gentleman in manner." (Chapter 59)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement reflects on the true essence of gentility, suggesting that one's character and values define their status, rather than external appearances or societal position, underscoring the theme of social class and status.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Ambition and Desire
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I lived rough, that you should live smooth." (Chapter 18)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote expresses the sacrifice made by one character for the betterment of another, highlighting the theme of ambition and desire for a better future, even at personal cost.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I had now been out five days and nights." (Chapter 39)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement reflects the protagonist's relentless pursuit of his ambitions, demonstrating his determination and endurance in the face of challenges, emphasizing the theme of ambition and desire.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Suffering has been stronger than all other teaching, and has taught me to understand what your heart used to be." (Chapter 59)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This reflection on suffering and its transformative power suggests a shift in priorities and understanding, emphasizing the theme of redemption and the realization of deeper desires beyond material ambitions.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Redemption and Forgiveness
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I will honour Christmas in my heart, and try to keep it all the year." (Chapter 5)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote marks the beginning of the protagonist's journey towards redemption and forgiveness, as he commits to embracing the spirit of Christmas and embodying its values throughout the year.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I could bear to think of the past, but I could not bear to think of the present or the future." (Chapter 27)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement reflects the protagonist's struggle with accepting the present and future consequences of his actions, highlighting the internal conflict central to his quest for redemption and forgiveness.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I only saw in him a much better man than I had been to Joe." (Chapter 59)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist's recognition of his own failings and the transformation he witnesses in another character signifies his journey towards redemption and forgiveness, emphasizing growth and reconciliation in the face of past mistakes.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

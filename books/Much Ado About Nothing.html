@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Much Ado About Nothing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Much Ado About Nothing</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Deception and Appearance vs. Reality
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Are you good men and true?" (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This question from the play's opening scene sets the stage for themes of deception and appearance vs. reality, as characters question the honesty and true intentions of others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Therefore let Benedick, like cover'd fire, consume away in sighs, waste inwardly." (Act 2, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote illustrates deception as characters, like Benedick, hide their true feelings beneath a facade, representing the contrast between outward appearance and inner reality.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Let me bid you welcome, my lord: being reconciled to the prince your brother, I owe you all duty." (Act 5, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement exemplifies the deception present in the play's resolution, as characters feign reconciliation and duty while harboring underlying motives and emotions.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Love and Relationships
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I do much wonder that one man, seeing how much another man is a fool when he dedicates his behaviors to love, will, after he hath laughed at such shallow follies in others, become the argument of his own scorn by failing in love." (Act 1, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote explores the complexities of love and relationships, highlighting the irony of individuals ridiculing others' romantic pursuits only to fall victim to similar follies themselves.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"In mine eye she is the sweetest lady that ever I look'd on." (Act 2, Scene 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This line expresses Claudio's genuine affection for Hero, emphasizing the sincerity of his feelings amidst the backdrop of deception and misunderstanding.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"But mine, and mine I loved, and mine I praised, and mine that I was proud on, mine so much that I myself was to myself not mine, valuing of her." (Act 4, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote reflects Claudio's remorse and regret upon believing Hero to be unfaithful, underscoring the fragility of love and the consequences of misunderstanding.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Misunderstanding and Conflict
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I will do any modest office, my lord, to help my cousin to a good husband." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This statement sets the stage for misunderstanding and conflict as characters unwittingly contribute to the misperceptions and tensions that arise throughout the play.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Oh, what men dare do! what men may do! what men daily do, not knowing what they do!" (Act 4, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This line reflects on the consequences of human actions driven by misunderstanding and ignorance, highlighting the destructive potential of unchecked behavior.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"For which of my bad parts didst thou first fall in love with me?" (Act 5, Scene 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This question from Beatrice reflects on the misunderstandings that initially clouded her relationship with Benedick, highlighting the journey towards mutual understanding and reconciliation.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

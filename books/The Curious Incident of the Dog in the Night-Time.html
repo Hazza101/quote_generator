@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Curious Incident of the Dog in the Night-Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>The Curious Incident of the Dog in the Night-Time</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Perception and Reality
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I find people confusing. This is for two main reasons. The first main reason is that people do a lot of talking without using any words. Siobhan says that if you raise one eyebrow it can mean lots of different things."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote illustrates the complexity of human communication and the nuances of nonverbal cues. It reflects the protagonist's struggle to understand the unspoken language of others, highlighting the gap between perception and reality.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I know all the countries in the world and their capital cities and every prime number up to 7,057."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote showcases the protagonist's exceptional memory and intellectual capabilities. It emphasizes the distinction between factual knowledge and subjective perception, hinting at the protagonist's unique way of processing information.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"And I know that sometimes people who are sad don't want to talk about it when they are asked questions, especially questions like 'What's the matter?' or 'Why are you sad?'"</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects the protagonist's growing understanding of human emotions and the complexities of interpersonal relationships. It suggests an awareness of the discrepancy between outward appearances and inner feelings.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Truth and Honesty
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I think prime numbers are like life. They are very logical but you could never work out the rules, even if you spent all your time thinking about them."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote draws a parallel between prime numbers and life, highlighting the inherent complexity and unpredictability of both. It suggests that while certain aspects of life may seem logical, there are deeper mysteries that defy comprehension.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I think the opposite of white isn't black, it's absence of white."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote offers a philosophical perspective on the concept of opposites, suggesting that darkness is not the opposite of light, but rather the absence of it. It challenges conventional notions of truth and falsehood, encouraging a deeper exploration of reality.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You can't get a petrol-driven lawn mower into a Mini Cooper. And you can't put your life into a person and expect them to carry it."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote employs metaphorical language to convey a profound truth about human relationships. It emphasizes the importance of self-reliance and personal responsibility, suggesting that individuals cannot rely on others to carry the weight of their existence.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Family and Relationships
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I was brave because I had a mystery to solve, and because I knew that people thought I wasn't brave."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects the protagonist's internal struggle with courage and self-perception. It suggests that bravery is not just about outward actions but also about facing one's fears and insecurities.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I had to make a decision. I could keep on going and die or I could stop and try to find the right thing to do."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote highlights the protagonist's internal conflict and the moral dilemmas they encounter. It underscores the importance of ethical decision-making and the pursuit of what is morally right.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"And I know I can do this because I went to London on my own, and because I solved the mystery of Who Killed Wellington? and I found my mother and I was brave and I wrote a book and that means I can do anything."</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote signifies the protagonist's growth and self-confidence as they reflect on their past achievements. It demonstrates the transformative power of personal experiences and the resilience gained through overcoming challenges.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

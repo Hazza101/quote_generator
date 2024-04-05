@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Taste of Honey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>A Taste of Honey</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Family and Relationships
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"A taste of honey is worse than none at all." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote suggests a longing for deeper connection and fulfillment in relationships, indicating the character's desire for more than just superficial experiences.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I’ve decided, you know. I’m going to have the baby. I’ll give birth to it. I can’t bear to have anything scraped out of me." (Act 2, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects a significant decision related to family and motherhood, highlighting the character's resolve and determination to embrace the responsibilities and challenges ahead.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I just want to know what it’s like to have a bit of security." (Act 3, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote conveys a fundamental human desire for stability and safety within the context of relationships, underscoring the character's yearning for a sense of belonging and assurance.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Self-Discovery
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I’m going to get myself a new place to live." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote signifies a beginning of a journey toward self-reliance and independence, as the character seeks to carve out their own path and establish their identity apart from others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You’ve left school, you’ve left home, you’ve left me. What’s left?" (Act 2, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reflects a moment of introspection and questioning as the character grapples with the challenges of self-discovery and the loss of familiar anchors, prompting a deeper exploration of identity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I’m going to be with you. I’m going to look after you." (Act 3, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote embodies a sense of connection and commitment, as the character expresses a desire to support and care for another individual, indicating a newfound understanding of their role and purpose in relationships.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Social Class and Poverty
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It’s not easy to be left all on your own." (Act 1, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote highlights the vulnerability and isolation that can accompany social marginalization, shedding light on the hardships faced by individuals who lack the support and resources available to others.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We don’t want your sort here. We’re respectable people." (Act 2, Scene 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote reveals the prejudice and discrimination experienced by those from lower social classes, underscoring the barriers to social mobility and acceptance faced by marginalized individuals in society.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I’m just like everybody else. I want to be happy." (Act 3, Scene 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> This quote expresses a universal desire for fulfillment and contentment, transcending social divides and emphasizing the common humanity shared by all individuals, regardless of their socioeconomic status.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

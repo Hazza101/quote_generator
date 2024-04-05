@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sign of Four</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>The Sign of Four</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Mystery and Detection
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It is of the utmost importance that you should attend carefully to what I say. You are aware that I am not accustomed to telling fairy tales." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote introduces the theme of mystery and detection as Sherlock Holmes addresses the seriousness of the situation, emphasizing the need for close attention to detail and the expectation of truthfulness in his narration, setting the tone for the investigative narrative that follows.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We have not an instant to lose. But let me go over the principal points again before we start. There's nothing so important as trifles." (Chapter 6)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote underscores the significance of meticulous attention to detail in the process of solving mysteries, highlighting Sherlock Holmes's methodical approach and his recognition of the value of seemingly insignificant clues, thus reinforcing the theme of meticulous investigation and deduction.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I have been at some small expense over this matter, which I shall expect the bank to refund, but beyond that I am amply repaid by having had an experience which is in many ways unique, and by hearing the very remarkable narrative of the Red-Headed League." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote reflects on the satisfaction derived from engaging in the mystery-solving process, indicating Sherlock Holmes's fulfillment in unraveling the case and his appreciation for the intriguing narratives that emerge from his investigations, thereby concluding the narrative arc on a note of intellectual enrichment and fulfillment.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Adventure and Exploration
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It was upon the 4th of March, as I have good reason to remember, that I rose somewhat earlier than usual, and found that Sherlock Holmes had not yet finished his breakfast." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote hints at the excitement and anticipation of embarking on an adventure, as Dr. Watson recalls the events leading up to his involvement in Sherlock Holmes's investigative endeavors, setting the stage for the narrative's exploration of thrilling exploits and daring escapades.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We were fortunate enough to come upon this post-chaise and to find some cheese and whisky in the luncheon basket which is usually kept aboard. Having dispatched this by an orderly, I left my wife to her rest and wandered on with my pipe in my mouth, and my inseparable terrier at my heels." (Chapter 6)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote captures the spirit of adventure and exploration as Dr. Watson recounts a spontaneous journey, evoking imagery of travel, sustenance, and companionship, thereby enhancing the narrative's sense of adventure and the thrill of discovery amidst unforeseen circumstances.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"It is not an enviable one: flush of money and destitute of friends, insolent and dogmatic to those who were not socially beneath him, he had become within a few years one of the best known scientific authorities in the world." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote reflects on the consequences of adventurous pursuits, highlighting the transformation of a character who, despite facing personal challenges, attains recognition and success in his chosen field, thereby underscoring the theme of personal growth and achievement through exploration and perseverance.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Friendship and Loyalty
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The document was of the deepest interest to the young man, though he did not seem to appreciate it. In reality, however, it bore reference to a professional case in which Holmes had been engaged." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote introduces the theme of friendship and loyalty as Sherlock Holmes shares a document of significance with a young man, indicating his willingness to involve others in his investigative work and suggesting a bond of trust and mutual respect between them, thus setting the stage for collaborative efforts and shared experiences.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Our friends arrived in time for tea, and they were duly presented to Mr. Bartholomew Sholto, who has seemed to me to be an agreeable and courteous gentleman." (Chapter 6)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote highlights the importance of friendship and social interaction in the narrative, as characters come together in a convivial setting, fostering camaraderie and mutual regard amidst the unfolding mystery, thereby reinforcing the theme of companionship and interpersonal connections.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"He could not go back to his people without having made a dash for the diamond mines." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote suggests the influence of loyalty and familial duty on character motivations, as a character's commitment to his people drives him to undertake a risky venture, underscoring the theme of loyalty and the sacrifices individuals are willing to make for the well-being of their loved ones.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

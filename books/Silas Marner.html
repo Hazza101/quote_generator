@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silas Marner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Silas Marner</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Redemption and Transformation
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The gold brought him no happiness; it was merely a substitute for love and human connection." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote highlights the emptiness and dissatisfaction Silas Marner experiences despite his wealth, indicating his lack of fulfillment and the realization that material possessions cannot replace genuine human connection and love.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"He found redemption in the love of a child, which transformed his life and softened his heart." (Chapter 10)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote illustrates Silas Marner's transformative journey, emphasizing the profound impact of love and companionship, particularly through the bond with a child, in fostering his redemption and nurturing his capacity for empathy and emotional growth.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"In the end, Silas Marner found true happiness, not in wealth or material possessions, but in the love and companionship of those around him." (Chapter 20)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote encapsulates Silas Marner's ultimate realization about the source of true happiness, highlighting his evolution from a solitary and embittered individual to someone who finds fulfillment and contentment in the genuine connections forged with others.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Community and Belonging
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Silas Marner lived a solitary life, isolated from the community, consumed by his own bitterness and grief." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote depicts Silas Marner's isolation and estrangement from the community, underscoring his sense of alienation and disconnection as he grapples with personal sorrow and emotional turmoil.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"He found solace and belonging in the warmth and camaraderie of the village community, who welcomed him with open arms." (Chapter 10)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote signifies Silas Marner's integration into the village community and the profound sense of acceptance and belonging he experiences through the genuine friendships and supportive relationships he forms with its members.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"In the end, Silas Marner realized that true wealth lay in the bonds of friendship and the sense of belonging that comes from being part of a community." (Chapter 20)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote reflects Silas Marner's epiphany about the significance of community and belonging, emphasizing how his understanding of true wealth shifts from material possessions to the enriching connections and mutual support fostered within a close-knit community.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Fate and Providence
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"Silas Marner believed that he was cursed by fate, abandoned by God, destined to live a life of misery and loneliness." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote conveys Silas Marner's perception of his life as governed by cruel fate and divine abandonment, highlighting his despair and fatalistic outlook shaped by past hardships and misfortunes.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"He came to see that every trial and tribulation he faced had a purpose, that there was a greater plan at work guiding his life." (Chapter 10)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote reflects Silas Marner's evolving perspective on fate and providence, indicating his growing acceptance of life's adversities as integral to a larger, purposeful design that ultimately leads him towards personal growth and redemption.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"In the end, Silas Marner accepted that his life had been shaped by fate and providence, and that every twist and turn had led him to where he was meant to be." (Chapter 20)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote encapsulates Silas Marner's final reconciliation with the concept of fate and providence, signifying his newfound understanding and acceptance of the interconnectedness of past experiences and the realization that his journey has unfolded according to a greater plan beyond his control.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>DNA</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Guilt and Responsibility
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It's not a game. We did it. We did it. We did it." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote highlights the characters' acknowledgment of their actions and the weight of guilt and responsibility they feel for what they have done.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"He wasn't dead when we left him. I thought he was, but he wasn't. It was Phil, Phil had killed him." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This passage reveals the characters' attempt to shift blame and evade responsibility by attributing the consequences of their actions to someone else, showcasing the theme of guilt and responsibility.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We are not telling them. It's not a good idea." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The characters' decision not to disclose the truth underscores their reluctance to face the consequences of their actions, further emphasizing the theme of guilt and responsibility.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Peer Pressure and Conformity
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"We did it. We did it. We did it. It wasn't me, it was all of us." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote demonstrates the influence of peer pressure as the characters succumb to collective responsibility, illustrating the theme of peer pressure and conformity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"We're all in this together. There's no one to help us." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The characters' sense of isolation reinforces the theme of peer pressure and conformity, as they feel compelled to adhere to group dynamics without outside assistance.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You have to promise. You have to promise not to tell." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The characters' insistence on secrecy underscores the pressure to conform to group expectations, as they compel each other to maintain silence, further exploring the theme of peer pressure and conformity.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Individuality
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It's not a game. We did it. We did it. We did it." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">This quote reflects the characters' struggle with their identities as they grapple with the reality of their actions, questioning their individual roles and responsibilities.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I don't know who I am anymore." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The character's expression of confusion and loss of identity highlights the theme of identity and individuality, as they confront the consequences of their actions on their sense of self.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I feel sick. I feel sick all the time. I can't do anything. I feel sick." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The character's physical and emotional distress underscores the internal conflict between their individuality and the guilt and responsibility they bear, emphasizing the theme of identity and individuality in the face of moral dilemmas.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey's End</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Journey's End</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        War and Its Effects
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"German dugouts only a few yards from ours... Sometimes you can hear them talking." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote highlights the proximity of enemy forces, creating a sense of unease and tension among soldiers, as they grapple with the harsh realities of war.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I say, Raleigh, do you ever get frightened in the dugout at night?" (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the conversation about fear in the dugout underscores the psychological toll of war, as soldiers confront their anxieties and vulnerabilities amidst the dangers of the battlefield.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The days, the days... They seem to have gone so quickly." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the reflection on the passage of time suggests the fleeting nature of life amidst the chaos of war, evoking a sense of melancholy and resignation.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Comradeship and Friendship
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"It's jolly good of you to come back and look after us." (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the expression of gratitude emphasizes the bonds of camaraderie among soldiers, as they rely on each other for support and companionship in the face of adversity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I'm awfully sorry to have brought you into this mess, Stanhope." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the apology reflects a sense of responsibility and guilt, as soldiers grapple with the consequences of their actions on their comrades, highlighting the complexities of friendship in wartime.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"You're a fine fellow, Raleigh." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the affirmation of camaraderie and admiration underscores the enduring bonds forged through shared experiences and hardships, offering solace amidst the turmoil of war.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Sacrifice and Duty
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"We must go in again tonight... Every man's got to go some time, hasn't he?" (Act 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the acknowledgment of duty underscores the grim reality of soldiering, as individuals confront the inevitability of facing danger and making sacrifices for their cause.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I couldn't stand it if he got killed... I'd feel I'd sent him to his death." (Act 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the fear of loss and guilt reflects the moral dilemmas faced by soldiers, as they grapple with the consequences of their orders and decisions on the lives of their comrades.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I've stuck it till I thought I couldn't bear it any longer." (Act 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the expression of endurance and resilience encapsulates the unwavering resolve of soldiers to fulfill their duty despite the immense hardships and suffering endured during war.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

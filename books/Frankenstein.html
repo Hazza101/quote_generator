@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankenstein</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Frankenstein</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Ambition and Hubris
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I see by your eagerness, and the wonder and hope which your eyes express, my friend, that you expect to be informed of the secret with which I am acquainted." (Letter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote introduces the theme of ambition as the narrator's friend eagerly anticipates learning the narrator's secret, reflecting the human desire for knowledge and the pursuit of ambitious goals.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I had worked hard for nearly two years, for the sole purpose of infusing life into an inanimate body." (Chapter 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote showcases the extent of the protagonist's ambition and hubris as he dedicates himself tirelessly to the ambitious experiment of creating life, driven by his desire to challenge the boundaries of science and nature.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Seek happiness in tranquility and avoid ambition, even if it be only the apparently innocent one of distinguishing yourself in science and discoveries." (Chapter 24)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote serves as a cautionary message against unchecked ambition and hubris, advising the pursuit of inner peace and contentment over the relentless pursuit of ambitious goals, especially when they involve tampering with the natural order.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Nature vs. Nurture
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The world was to me a secret which I desired to divine. Curiosity, earnest research to learn the hidden laws of nature, gladness akin to rapture, as they were unfolded to me, are among the earliest sensations I can remember." (Chapter 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote highlights the protagonist's innate curiosity and fascination with nature, suggesting a predisposition towards scientific inquiry and the exploration of natural phenomena.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Of what a strange nature is knowledge! It clings to the mind, when it has once seized on it, like a lichen on the rock." (Chapter 4)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote reflects on the transformative power of knowledge and its enduring impact on the human mind, drawing parallels between the tenacity of knowledge and the resilient growth of lichen on a rock, thereby underscoring the influence of nurture on shaping one's intellect and worldview.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"The labours of men of genius, however erroneously directed, scarcely ever fail in ultimately turning to the solid advantage of mankind." (Chapter 24)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote suggests a harmonious blend of nature and nurture as it acknowledges the potential of human ingenuity, even when misguided, to contribute positively to society's advancement, emphasizing the profound impact of both innate talent and acquired knowledge.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Responsibility and Consequences
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I am already far north of London, and as I walk in the streets of Petersburgh, I feel a cold northern breeze play upon my cheeks, which braces my nerves and fills me with delight." (Letter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> At the beginning, the quote sets the stage for the narrative's exploration of responsibility and consequences by evoking a sense of anticipation and foreboding as the narrator embarks on his journey, hinting at the chilling consequences of his ambitious pursuits.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I beheld those I loved spend vain sorrow upon the graves of William and Justine, the first hapless victims to my unhallowed arts." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> In the middle, the quote illustrates the protagonist's remorse and guilt over the tragic consequences of his actions, highlighting the profound sense of responsibility he feels for the suffering inflicted upon his loved ones as a result of his reckless experimentation.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Death snatches away many blooming children, the only hopes of their doting parents: how many brides and youthful lovers have been one day in the bloom of health and hope, and the next a prey for worms and the decay of the tomb!" (Chapter 22)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box"> Towards the end, the quote serves as a somber reflection on the universal consequences of mortality, emphasizing the inescapab</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

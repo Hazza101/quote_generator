@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anita and Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+        header {
+            background-color: #00ADB5;
+            color: #fff;
+            padding: 5px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            text-shadow: #333;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            width:100%;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            font-weight: lighter;
+        }
+
+        #image-container {
+            background-color: transparent;
+        }
+
+
+       
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-height: 70%;
+        }
+
+
+        .book-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            padding-right: 10px;
+        }
+
+        .copy-wrapper:hover {
+            background-color: whitesmoke;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            50% { transform: translateX(2px) rotate(2deg); }
+            75% { transform: translateX(-2px) rotate(-2deg); }
+            100% { transform: translateX(0); }
+
+        }
+
+        .accordion-header {
+            
+            background-color: white;
+            border:none;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .accordion-title {
+            
+            width: 50%;
+        }
+
+        .accordion-arrow {
+            
+            width: 50%;
+            text-align: right;
+            
+        }
+
+        .accordion-arrow button {
+            border:none;
+            background-color: white;
+            
+            font-size: larger;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            
+            
+            
+        }
+
+        .quote-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+        }
+
+        .active {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-explain {
+            align-self: flex-start;
+            position: relative;
+        }
+
+        .popup-box {
+            visibility: hidden;
+            width: 50%;
+            background-color: lightgray;
+            color: black;
+            border: 1px solid black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            
+            transform: translateY(50px);
+
+  
+        }
+        
+        
+        
+        .quote-explain:hover + .popup-box {
+            visibility: visible;
+        }
+
+        
+        
+        
+
+
+        .footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 100px;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            const arrow = item.querySelector('.accordion-arrow button');
+            const content = item.querySelector('.accordion-content');
+            
+
+            header.addEventListener('click', function () {
+                arrow.classList.toggle('rotate');
+                content.classList.toggle('active');
+
+                
+            });
+        });
+    });
+
+    function copyToClipBoard() {
+        
+        
+        
+        var image = document.getElementById("testImage"); 
+        
+        image.classList.add('shake');
+        setTimeout( function() {
+            image.classList.remove('shake');
+        }, 500);
+
+
+        var quotes = document.querySelectorAll('.quote');
+        var allQuotes = "";
+
+        quotes.forEach(function(quote)  {
+            allQuotes += quote.textContent.trim() + '\n';
+        });
+
+        navigator.clipboard.writeText(allQuotes);
+            
+}
+
+    
+</script>
+
+</head>
+<body>
+    <header>
+        <h1>whatsmyexamquote?</h1>
+        <a id="image-container" href="https://www.whatsmyexamquote.xyz"><img src="media/home_button2.png" height="40" width="40"/></a>
+        
+
+
+    </header>
+<section>
+        <div class="book-title">
+            <h1>Anita and Me</h1>
+            <div class="copy-wrapper" onclick="copyToClipBoard()">
+                <img src="media/copy_icon.png" id="testImage" width="30" height="30" alt="copy quotes button"/>
+            </div>
+        </div>
+            <div class="accordion">
+
+
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Identity and Belonging
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I was never ashamed of being a half-caste. It was only later, when the milk-bottle jokes started, that I thought there might be something wrong with me." (Chapter 1)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist reflects on their sense of identity and belonging, grappling with societal perceptions and the impact of external judgment on their self-image.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I could never do anything right. Not the right clothes, the right colour, the right attitude, the right anything. I wasn't anything. I wasn't anyone." (Chapter 12)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist expresses their feelings of inadequacy and alienation, highlighting the struggle to find a sense of identity and belonging amidst societal expectations and pressure.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I don’t have to explain myself to anyone, especially people who don’t know me at all." (Chapter 24)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist asserts their autonomy and self-worth, rejecting the need for external validation and embracing their identity on their own terms.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Family and Relationships
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"The image of me being taken away by strangers was always going to be distressing." (Chapter 2)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist reflects on the impact of family dynamics on their sense of security and belonging, highlighting the importance of familial relationships in shaping identity.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"But I was growing up and realising that my mother wasn't perfect, that we didn't have to like the same things, do the same things, be the same person." (Chapter 15)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist grapples with evolving familial relationships and the realization that individual identity can differ from familial expectations, highlighting the complexities of family dynamics.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I realised then, that my parents hadn't been so different to me after all. That in growing up, I had also grown closer to them." (Chapter 25)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist reconciles with their parents and recognizes the commonalities in their experiences, emphasizing the importance of familial bonds in fostering a sense of belonging.</div>
+                    </div>
+
+
+</div>
+</div>
+
+<div class="accordion-item">
+                <div class="accordion-header">
+                    <div class="accordion-title" id="testing">
+                        Cultural Conflict and Change
+                    </div>
+                    <div class="accordion-arrow">
+                        <button>&#8711;</button>
+                    </div>
+
+                </div>
+                
+                <div class="accordion-content">
+
+
+<div class="quote-section">
+                        <p class="quote"><em>"I felt like a Chinese whisper, getting fainter and fainter." (Chapter 3)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist reflects on the diminishing connection to their cultural heritage, symbolized by the fading metaphor of a Chinese whisper, highlighting the struggle to maintain cultural identity amidst societal change.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"Things had changed and people had changed. The area was no longer like the place I grew up in." (Chapter 19)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist observes the cultural shifts in their community, underscoring the theme of cultural conflict and change as they navigate evolving social landscapes.</div>
+                    </div>
+
+<div class="quote-section">
+                        <p class="quote"><em>"I knew then that I was leaving behind a life I would never see again. And I wasn't sorry about that." (Chapter 30)</em></p>
+                        <button class="quote-explain"><b>?</b></button>
+                        <div class="popup-box">The protagonist embraces the inevitability of change and acknowledges the sense of closure in leaving behind their past, highlighting the theme of cultural conflict and change as they move forward towards a new chapter in life.</div>
+                    </div>
+
+
+</div>
+</div>
+
+</div>
+</section>
+<div class="footer">
+    <p>Email: <a href="mailto:WhatsMyExamBoard?@gmail.com"><em>WhatsMyExamBoard?@gmail.com</em></a></p>
+</div>
+</body>
+</html>

@@ -89,9 +89,12 @@
             display: flex;
             padding-left: 2rem;
             padding-right: 2rem;
-            width: 100%;
+            margin: 0 2rem;
+            width: 90%;
+            
 
             color: black;
+            border: 1px solid black;
             
             
            
@@ -101,13 +104,13 @@
         .intro-txt p {
             font-size: small;
             width: calc(50% - 2px);
-            border: 1px solid black;
+            
             
         }
 
         .quote-explain {
             width: calc(50% - 2px);    
-            border: 1px solid black;
+            
         }
 
         .bottom-side {
@@ -192,12 +195,24 @@
                 
             }
 
-            .left-side,
-            .middle-side,
-            .right-side {
-                width: 100%;
-                margin: 0;
+            .top-side {
+                flex-direction: column;
+                border: none;
             }
+
+            .intro-txt p, .intro-txt h1{
+                width: 100%;
+                margin: 0 2rem;
+                text-align: center;
+            }
+
+            .intro-txt h1 { 
+                margin-bottom: 0.5rem;
+            }
+
+
+
+            
         }
 
 
@@ -224,6 +239,32 @@
 
         header h1 {
             font-weight: lighter;
+        }
+
+        header h1 sup {
+            font-size: small;
+            font-weight: bold;
+            color: red;
+        }
+
+        #feedback-popup {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid black;
+            color: black;
+            padding: 5px;
+            z-index: 1;
+            font-size: small;
+        }
+
+        #feedback-link {
+            text-decoration: none;
+        }
+
+        header h3:hover ~ #feedback-popup {
+            display: block;
+            
         }
 
         #image-container {
@@ -363,7 +404,12 @@
 
     
     <header>
-        <h1>whatsmyexamquote?</h1>
+        <h1>whatsmyexamquote?<sup> beta</sup></h1>
+        <div class="feedback">
+            <h3><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGOUlzkx_-L3Dr3dLwepZOtWt_1wXUebcIOUUJS9sEqQ5-nA/viewform?usp=sf_link" id="feedback-link" target="_blank">feedback</a></h3>
+            <p id="feedback-popup">This website is in beta testing</p>
+        </div>
+        
         
         
 
